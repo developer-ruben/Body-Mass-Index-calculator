@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <meta
+      name="description"
+      content="Calculate your Body Mass Index (BMI) easily with our BMI calculator. Understand your weight in relation to your height and improve your health."
+    />
+    <meta
+      name="keywords"
+      content="BMI, Body Mass Index, BMI Calculator, Healthy Weight, Fitness, Health, Weight Management"
+    />
+    <meta name="author" content="Ruben de Man" />
+
+    <title>Frontend Mentor | Body Mass Index Calculator</title>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <header class="hero__header">
+          <div class="container">
+            <a href="#">
+              <img
+                class="hero__logo"
+                src="./assets/images/logo.svg"
+                width="64"
+                height="64"
+                alt="BMI Calculator Logo"
+              />
+            </a>
+          </div>
+        </header>
+
+        <div class="container">
+          <div class="hero__left">
+            <h1 class="hero__title">
+              Body Mass <br />
+              Index Calculator
+            </h1>
+            <p class="hero__text">
+              Better understand your weight in relation to your height using our
+              body mass index (BM) calculator. While BMI is not the sole
+              determinant of a healthy weight, it offers a valuable starting
+              point to evaluate your overall health and well-being.
+            </p>
+          </div>
+
+          <div class="calculator">
+            <h2 class="calculator__title">Enter your details below</h2>
+            <div class="calculator__row calculator__row--2-col">
+              <div>
+                <input
+                  class="calculator__radio"
+                  type="radio"
+                  name="type"
+                  id="metric"
+                  checked
+                />
+                <label for="metric">Metric</label>
+              </div>
+              <div>
+                <input
+                  class="calculator__radio"
+                  type="radio"
+                  name="type"
+                  id="imperial"
+                />
+                <label for="imperial">Imperial</label>
+              </div>
+            </div>
+
+            <div class="calculator__metric" id="metric-fields">
+              <div class="calculator__row calculator__row--2-col">
+                <div>
+                  <label class="calculator__label" for="height">Height</label>
+                  <div class="calculator__input-container">
+                    <input
+                      class="calculator__input"
+                      type="text"
+                      name="metric-height"
+                      id="metric-height"
+                      placeholder="0"
+                    />
+                    <span class="calculator__unit">cm</span>
+                  </div>
+                </div>
+                <div>
+                  <label class="calculator__label" for="height">weight</label>
+                  <div class="calculator__input-container">
+                    <input
+                      class="calculator__input"
+                      type="text"
+                      name="metric-weight"
+                      id="metric-weight"
+                      placeholder="0"
+                    />
+                    <span class="calculator__unit">kg</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="calculator__imperial" id="imperial-fields">
+              <div class="calculator__row calculator__row--2-col">
+                <div>
+                  <label class="calculator__label" for="height">Height</label>
+                  <div class="calculator__input-container">
+                    <input
+                      class="calculator__input"
+                      type="text"
+                      name="imperial-height-1"
+                      id="imperial-height-1"
+                      placeholder="0"
+                    />
+                    <span class="calculator__unit">ft</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="calculator__input-container">
+                    <input
+                      class="calculator__input"
+                      type="text"
+                      name="imperial-height-2"
+                      id="imperial-height-2"
+                      placeholder="0"
+                    />
+                    <span class="calculator__unit">in</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="calculator__row calculator__row--2-col">
+                <div>
+                  <label class="calculator__label" for="height">Weight</label>
+                  <div class="calculator__input-container">
+                    <input
+                      class="calculator__input"
+                      type="text"
+                      name="imperial-weight-1"
+                      id="imperial-weight-1"
+                      placeholder="0"
+                    />
+                    <span class="calculator__unit">st</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="calculator__input-container">
+                    <input
+                      class="calculator__input"
+                      type="text"
+                      name="imperial-weight-2"
+                      id="imperial-weight-2"
+                      placeholder="0"
+                    />
+                    <span class="calculator__unit">lbs</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="calculator__result">
+              <div class="calculator__start" id="start">
+                <h3 class="calculator__subtitle">Welcome!</h3>
+                <p class="calculator__text">
+                    Enter your height and weight and you’ll see your BMI result
+                  here
+                </p>
+              </div>
+              <div class="calculator__score" id="score">
+                <div class="calculator__score-result">
+                  <span>Your BMI is...</span>
+                  <span class="calculator__score-number" id="bmi">23.4</span>
+                </div>
+                <p class="calculator__score-text">
+                  Your BMI suggests you’re a <span id="bmi-type"></span> weight.
+                  Your ideal weight is between
+                  <span
+                    class="calculator__score-ideal"
+                    id="bmi-ideal-weight"
+                  ></span
+                  >.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <div class="container">
+          <img
+            class="about-section__image"
+            src="./assets/images/image-man-eating.webp"
+            width="564"
+            height="533"
+            alt="Man eating and smiling to the camera"
+          />
+          <div class="about-section__right">
+            <h2 class="about-section__title">What your BMI result means</h2>
+            <p class="about-section__text">
+              A BMI range of 18.5 to 24.9 is considered a 'healthy weight.'
+              Maintaining a healthy weight may lower your chances of
+              experiencing health issues later on, such as obesity and type 2
+              diabetes. Aim for a nutritious diet with reduced fat and sugar
+              content, incorporating ample fruits and vegetables. Additionally,
+              strive for regular physical activity, ideally about 30 minutes
+              daily for five days a week.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="features-section">
+        <div class="feature">
+          <img
+            class="feature__icon"
+            width="64"
+            height="64"
+            src="./assets/images/icon-eating.svg"
+            alt="Eating Icon"
+          />
+          <div>
+            <h2 class="feature__title">Healthy eating</h2>
+            <p class="feature__text">
+              Healthy eating promotes weight control, disease prevention, better
+              digestion, immunity, mental clarity, and mood.
+            </p>
+          </div>
+        </div>
+        <div class="feature">
+          <img
+            class="feature__icon"
+            width="64"
+            height="64"
+            src="./assets/images/icon-exercise.svg"
+            alt="Exercise Icon"
+          />
+          <div>
+            <h2 class="feature__title">Regular exercise</h2>
+            <p class="feature__text">
+              Exercise improves fitness, aids weight control, elevates mood, and
+              reduces disease risk, fostering wellness and longevity.
+            </p>
+          </div>
+        </div>
+        <div class="feature">
+          <img
+            class="feature__icon"
+            width="64"
+            height="64"
+            src="./assets/images/icon-sleep.svg"
+            alt="Sleep Icon"
+          />
+          <div>
+            <h2 class="feature__title">Adequate sleep</h2>
+            <p class="feature__text">
+              Sleep enhances mental clarity, emotional stability, and physical
+              wellness, promoting overall restoration and rejuvenation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="limitations-section">
+        <div class="container">
+          <div class="limitations-section__intro">
+            <h2 class="limitations-section__title">Limitations of BMI</h2>
+            <p class="limitations-section__text">
+              Although BMI is often a practical indicator of healthy weight, it
+              is not suited for every person. Specific groups should carefully
+              consider their BMI outcomes, and in certain cases, the measurement
+              may not be beneficial to use.
+            </p>
+          </div>
+
+          <div class="limitations-section__grid">
+            <div class="limitation">
+              <div class="limitation__header">
+                <img
+                  class="limitation__icon"
+                  width="32"
+                  height="32"
+                  src="./assets/images/icon-gender.svg"
+                  alt="Gender Icon"
+                />
+                <h3 class="limitation__title">Gender</h3>
+              </div>
+              <p class="limitation__text">
+                The development and body fat composition of girls and boys vary
+                with age. Consequently, a child's age and gender are considered
+                when evaluating their BMI.
+              </p>
+            </div>
+
+            <div class="limitation">
+              <div class="limitation__header">
+                <img
+                  class="limitation__icon"
+                  width="32"
+                  height="32"
+                  src="./assets/images/icon-age.svg"
+                  alt="Age Icon"
+                />
+                <h3 class="limitation__title">Age</h3>
+              </div>
+              <p class="limitation__text">
+                In aging individuals, increased body fat and muscle loss may
+                cause BMI to underestimate body fat content.
+              </p>
+            </div>
+
+            <div class="limitation">
+              <div class="limitation__header">
+                <img
+                  class="limitation__icon"
+                  width="32"
+                  height="32"
+                  src="./assets/images/icon-muscle.svg"
+                  alt="Muscle Icon"
+                />
+                <h3 class="limitation__title">Muscle</h3>
+              </div>
+              <p class="limitation__text">
+                BMI may misclassify muscular individuals as overweight or obese,
+                as it doesn't differentiate muscle from fat.
+              </p>
+            </div>
+
+            <div class="limitation">
+              <div class="limitation__header">
+                <img
+                  class="limitation__icon"
+                  width="32"
+                  height="32"
+                  src="./assets/images/icon-pregnancy.svg"
+                  alt="Pregnancy Icon"
+                />
+                <h3 class="limitation__title">Pregnancy</h3>
+              </div>
+              <p class="limitation__text">
+                Expectant mothers experience weight gain due to their growing
+                baby. Maintaining a healthy pre-pregnancy BMI is advisable to
+                minimise health risks for both mother and child.
+              </p>
+            </div>
+
+            <div class="limitation">
+              <div class="limitation__header">
+                <img
+                  class="limitation__icon"
+                  width="32"
+                  height="32"
+                  src="./assets/images/icon-race.svg"
+                  alt="Race Icon"
+                />
+                <h3 class="limitation__title">Race</h3>
+              </div>
+              <p class="limitation__text">
+                Certain health concerns may affect individuals of some Black and
+                Asian origins at lower BMIs than others. To learn more, it is
+                advised to discuss this with your GP or practice nurse.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="attribution">
+      <p>
+        Challenge by
+        <a
+          class="attribution__link"
+          href="https://www.frontendmentor.io?ref=challenge"
+          target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a class="attribution__link" href="https://rubendeman.nl"
+          >Ruben de Man</a
+        >.
+      </p>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,689 @@
+/* FONTS */
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/static/Inter-Regular.ttf");
+  font-family: "Inter";
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 600;
+  src: url("./assets/fonts/static/Inter-SemiBold.ttf");
+  font-family: "Inter";
+}
+
+/* VARIABLES */
+
+:root {
+  --clr-white: 0, 0%, 100%;
+  --clr-black: 0, 0%, 0%;
+  --clr-grey-500: 215, 17%, 45%;
+  --clr-grey-300: 215, 43%, 77%;
+
+  --clr-blue-900: 215, 31%, 21%;
+  --clr-blue-500: 227, 92%, 58%;
+  --clr-blue-300: 209, 69%, 82%;
+  --clr-blue-100: 228, 94%, 94%;
+
+  --clr-gradient: linear-gradient(
+    to right,
+    hsl(183, 95%, 92%),
+    hsl(216, 95%, 92%)
+  );
+  --clr-gradient-2: linear-gradient(to right, hsl(183, 95%, 92%, 0), #d6e6fe);
+
+  --text-preset-1-size: 6.4rem;
+  --text-preset-1-height: 1.1;
+  --text-preset-1-ls: -5%;
+
+  --text-preset-2-size: 4.8rem;
+  --text-preset-2-height: 1.1;
+  --text-preset-2-ls: -5%;
+
+  --text-preset-3-size: 3.2rem;
+  --text-preset-3-height: 1.1;
+  --text-preset-3-ls: -5%;
+
+  --text-preset-4-size: 2.4rem;
+  --text-preset-4-height: 1.2;
+  --text-preset-4-ls: -5%;
+
+  --text-preset-5-size: 2rem;
+  --text-preset-5-height: 1.2;
+  --text-preset-5-ls: -5%;
+
+  --text-preset-6-size: 1.6rem;
+  --text-preset-6-height: 1.5;
+
+  --text-preset-7-size: 1.4rem;
+  --text-preset-7-height: 1.5;
+}
+
+/* RESET */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  position: relative;
+  overflow-x: hidden;
+  font-size: 62.5%;
+}
+
+img {
+  max-width: 100%;
+}
+
+input,
+button,
+textarea {
+  font: inherit;
+}
+
+/* GENERAL */
+
+body {
+  position: relative;
+  background-color: hsl(var(--clr-slate-300));
+  overflow-x: hidden;
+  color: hsl(var(--clr-grey-500));
+  font-size: var(--text-preset-6-size);
+  font-family: "Inter", sans-serif;
+}
+
+p {
+  line-height: var(--text-preset-6-height);
+}
+
+/* UTILITY */
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  position: absolute;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1160px;
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  padding: 8.8rem 0 12.1rem 0;
+}
+
+.hero::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 0 0 3.5rem 3.5rem;
+  background: var(--clr-gradient-2);
+  width: 70%;
+  height: 100%;
+  content: "";
+}
+
+.hero__header {
+  margin-bottom: 2.4rem;
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 564px;
+
+  gap: 3.2rem;
+}
+
+.hero__left {
+  padding-top: 7.2rem;
+}
+
+.hero__title {
+  margin-bottom: 3.2rem;
+  color: hsl(var(--clr-blue-900));
+  font-weight: 600;
+  font-size: var(--text-preset-1-size);
+  line-height: var(--text-preset-1-height);
+  letter-spacing: var(--text-preset-1-ls);
+}
+
+.hero__text {
+  max-width: 465px;
+}
+
+/* CALCULATOR */
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  box-shadow: 16px 32px 56px 0 hsl(var(--clr-blue-300), 0.25);
+  border-radius: 1.6rem;
+  background-color: hsl(var(--clr-white));
+  padding: 3.2rem;
+}
+
+.calculator__title {
+  color: hsl(var(--clr-blue-900));
+  font-size: var(--text-preset-4-size);
+  line-height: var(--text-preset-4-height);
+  letter-spacing: var(--text-preset-4-ls);
+}
+
+.calculator__row--2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.4rem;
+}
+
+.calculator__radio {
+  display: none;
+}
+
+.calculator__radio + label {
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 1.6rem;
+  color: hsl(var(--clr-blue-900));
+  font-weight: 600;
+}
+
+.calculator__radio + label:hover {
+  cursor: pointer;
+}
+
+.calculator__radio + label:hover::before {
+  border-color: hsl(var(--clr-blue-500));
+}
+
+.calculator__radio + label::before {
+  display: block;
+  transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  border: 1px solid hsl(var(--clr-grey-500));
+  border-radius: 50%;
+  width: 31px;
+  height: 31px;
+  content: "";
+}
+
+.calculator__radio:checked + label::before {
+  border-color: hsl(var(--clr-blue-100));
+  background-color: hsl(var(--clr-blue-100));
+}
+
+.calculator__radio + label::after {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 50%;
+  background-color: hsl(var(--clr-blue-500));
+  width: 15px;
+  height: 15px;
+  content: "";
+}
+
+.calculator__radio:checked + label::after {
+  opacity: 1;
+}
+
+.calculator__label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-size: var(--text-preset-7-size);
+  line-height: var(--text-preset-7-height);
+}
+
+.calculator__input-container {
+  position: relative;
+  border: 1px solid hsl(var(--clr-grey-500));
+  border-radius: 1.2rem;
+  padding: 1.6rem 2.4rem;
+  width: 100%;
+}
+
+.calculator__input {
+  outline: 0;
+  border: 0;
+  width: 100%;
+  color: hsl(var(--clr-blue-900));
+  font-weight: 600;
+  font-size: var(--text-preset-4-size);
+  line-height: var(--text-preset-4-height);
+  letter-spacing: var(--text-preset-4-ls);
+}
+
+.calculator__input::placeholder {
+  color: hsl(var(--clr-grey-500));
+}
+
+.calculator__unit {
+  position: absolute;
+  top: 50%;
+  right: 2.4rem;
+  transform: translateY(-50%);
+  color: hsl(var(--clr-blue-500));
+  font-weight: 600;
+  font-size: var(--text-preset-4-size);
+  line-height: var(--text-preset-4-height);
+  letter-spacing: var(--text-preset-4-ls);
+}
+
+.calculator__result {
+  border-radius: 1.6rem 15% 15% 1.6rem / 1.6rem 50% 50% 1.6rem;
+  background-color: hsl(var(--clr-blue-500));
+  padding: 3.2rem;
+  color: hsl(var(--clr-white));
+}
+
+.calculator__subtitle {
+  margin-bottom: 1.6rem;
+  font-weight: 600;
+  font-size: var(--text-preset-4-size);
+  line-height: var(--text-preset-4-height);
+  letter-spacing: var(--text-preset-4-ls);
+}
+
+.calculator__text {
+  font-size: var(--text-preset-7-size);
+  line-height: var(--text-preset-7-height);
+}
+
+.calculator__score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calculator__score-text {
+  max-width: 206px;
+  font-size: var(--text-preset-7-size);
+  line-height: var(--text-preset-7-height);
+}
+
+.calculator__score-result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-weight: 600;
+}
+
+.calculator__score-number {
+  font-size: var(--text-preset-1-size);
+  line-height: var(--text-preset-1-height);
+  letter-spacing: var(--text-preset-1-ls);
+}
+
+.calculator__score-ideal {
+  font-weight: 600;
+}
+
+.calculator__metric {
+  width: 100%;
+}
+
+.calculator__imperial {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  width: 100%;
+}
+
+.calculator__imperial .calculator__row {
+  align-items: flex-end;
+}
+
+/* ABOUT SECTION */
+
+.about-section {
+  padding: 5.1rem 0 8.6rem 0;
+}
+
+.about-section .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 7.2rem;
+}
+
+.about-section__image {
+  width: 100%;
+  max-width: 564px;
+}
+
+.about-section__right {
+  padding-top: 18.4rem;
+  max-width: 465px;
+}
+
+.about-section__title {
+  margin-bottom: 3.2rem;
+  color: hsl(var(--clr-blue-900));
+  font-weight: 600;
+  font-size: var(--text-preset-2-size);
+  line-height: var(--text-preset-2-height);
+  letter-spacing: var(--text-preset-2-ls);
+}
+
+/* FEATURES SECTION */
+
+.features-section {
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3.2rem;
+  margin: 0 auto;
+
+  padding: 9.25rem 11.2rem;
+  max-width: 1412px;
+}
+
+.features-section::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.25;
+  z-index: -1;
+  border-radius: 3.5rem;
+  background: var(--clr-gradient-2);
+  width: 100%;
+  height: 100%;
+  content: "";
+}
+
+.feature__icon {
+  margin-bottom: 4.8rem;
+}
+
+.feature__title {
+  margin-bottom: 2.4rem;
+  color: hsl(var(--clr-blue-900));
+  font-size: var(--text-preset-4-size);
+  line-height: var(--text-preset-4-height);
+  letter-spacing: var(--text-preset-4-ls);
+}
+
+/* LIMITATIONS SECTION */
+
+.limitations-section {
+  padding: 11.5rem 0;
+  min-height: 943px;
+}
+
+.limitations-section .container {
+  position: relative;
+}
+
+.limitations-section .container::before {
+  position: absolute;
+  top: 251px;
+  left: 165px;
+  content: url("./assets/images/pattern-curved-line-right.svg");
+}
+
+.limitations-section__intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 564px;
+}
+
+.limitations-section__title {
+  margin-bottom: 3.2rem;
+  color: hsl(var(--clr-blue-900));
+  font-weight: 600;
+  font-size: var(--text-preset-2-size);
+  line-height: var(--text-preset-2-height);
+  letter-spacing: var(--text-preset-2-ls);
+}
+
+.limitation {
+  box-shadow: 16px 32px 56px 0 hsl(var(--clr-blue-300), 0.25);
+  border-radius: 1.6rem;
+  background-color: hsl(var(--clr-white));
+  padding: 3.2rem;
+  max-width: 365px;
+}
+
+.limitation__header {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-bottom: 1.6rem;
+  color: hsl(var(--clr-blue-900));
+  font-weight: 600;
+}
+
+.limitations-section__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas:
+    ". . . . . . . gender gender gender gender ."
+    ". . . . age age age age muscle muscle muscle muscle"
+    ". pregnancy pregnancy pregnancy pregnancy race race race race . . .";
+  gap: 3.2rem;
+}
+
+.limitation:first-child {
+  grid-area: gender;
+}
+.limitation:nth-child(2) {
+  grid-area: age;
+}
+
+.limitation:nth-child(3) {
+  grid-area: muscle;
+}
+
+.limitation:nth-child(4) {
+  grid-area: pregnancy;
+}
+
+.limitation:last-child {
+  grid-area: race;
+}
+
+/* ATTRIBUTION */
+
+.attribution {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top-right-radius: 1rem;
+  background-color: hsl(var(--clr-white));
+  padding: 0.8rem;
+  font-size: 1rem;
+}
+
+.attribution__link {
+  color: hsl(var(--clr-blue-900));
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.attribution__link:hover {
+  text-decoration: underline;
+}
+
+/* MEDIA QUREIES */
+
+@media screen and (max-width: 1412px) {
+  .features-section {
+    margin: 0 2.4rem;
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  .container {
+    padding: 0 4.1rem;
+  }
+
+  .attribution {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 961px) {
+  .hero {
+    padding: 3.2rem 0 0 0;
+  }
+
+  .hero::before {
+    width: 100%;
+    height: 640px;
+  }
+
+  .hero__header {
+    text-align: center;
+  }
+
+  .hero .container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .hero__left {
+    padding-top: 0;
+    text-align: center;
+  }
+
+  .hero__text {
+    max-width: 100%;
+  }
+
+  .about-section .container {
+    position: relative;
+    justify-content: flex-end;
+  }
+
+  .about-section__image {
+    position: absolute;
+    left: -116px;
+    z-index: -1;
+    width: 435px;
+    height: 411px;
+  }
+
+  .about-section__right {
+    padding-top: 3.4rem;
+    max-width: 331px;
+  }
+
+  .features-section {
+    grid-template-columns: 1fr;
+    padding: 6rem 4.1rem;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .feature__icon {
+    margin-bottom: 0;
+  }
+
+  .limitations-section {
+    padding: 9.5rem 0;
+  }
+
+  .limitations-section__intro {
+    position: relative;
+    margin: 0 auto 5.6rem auto;
+    text-align: center;
+  }
+
+  .limitations-section__grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "gender gender age age"
+      "muscle muscle pregnancy pregnancy"
+      ". race race .";
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    padding: 0 2.4rem;
+  }
+  .header {
+    padding: 3.2rem 0;
+  }
+
+  .calculator {
+    padding: 2.4rem;
+  }
+
+  .calculator__row--2-col {
+    grid-template-columns: 1fr;
+  }
+
+  .calculator__result {
+    border-radius: 1.6rem;
+  }
+
+  .calculator__score {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.4rem;
+  }
+
+  .about-section .container {
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+
+  .about-section__image {
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  .about-section__right {
+    max-width: 100%;
+  }
+
+  .features-section {
+    gap: 4rem;
+  }
+
+  .feature {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3.2rem;
+  }
+
+  .limitations-section__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "gender"
+      "age"
+      "muscle"
+      "pregnancy"
+      "race";
+    gap: 1.6rem;
+  }
+
+  .limitation {
+    max-width: 100%;
+  }
+}
