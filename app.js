@@ -84,8 +84,14 @@ class BMICalculator {
   }
 
   handleMetricCalculation() {
-    const height = parseFloat(this.metricHeightInput.value) / 100;
-    const weight = parseFloat(this.metricWeightInput.value);
+    const rawHeight = this.metricHeightInput.value;
+    const rawWeight = this.metricWeightInput.value;
+
+    // Validate raw inputs first to catch empty, zero, or invalid strings
+    if (!this.isValidInput(rawHeight, rawWeight)) return;
+
+    const height = parseFloat(rawHeight) / 100;
+    const weight = parseFloat(rawWeight);
 
     if (!this.isValidInput(height, weight)) return;
 
@@ -125,7 +131,7 @@ class BMICalculator {
   }
 
   calculateBmi(kg, m) {
-    return (kg / (m * m)).toFixed(1);
+    return parseFloat((kg / (m * m)).toFixed(1));
   }
 
   showScore() {
